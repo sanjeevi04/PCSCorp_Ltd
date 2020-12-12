@@ -48,6 +48,7 @@ public class LoginFrame extends JFrame{
 			 else {
 				 if(emp.getRole().equals("EMP"))
 					{
+					
 					 new EMPHome(emp);
 					}
 					else if(emp.getRole().equals("HRA"))
@@ -55,13 +56,13 @@ public class LoginFrame extends JFrame{
 						
 						try {
 							new HRAHome();
-						} catch (ClassNotFoundException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						} catch (SQLException e) {
+						} catch (ClassNotFoundException | SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+							
+							
+						
 					}
 					else 
 					{

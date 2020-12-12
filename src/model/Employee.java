@@ -13,7 +13,7 @@ public Employee() {
 	
 	
 }
-public Employee(String firstName, String lastName, String userId, String password, String role, String gender,String active) {
+public Employee(String firstName, String lastName, String userId, String password, String role, String gender) {
 	super();
 	FirstName = firstName;
 	LastName = lastName;
@@ -21,7 +21,7 @@ public Employee(String firstName, String lastName, String userId, String passwor
 	Password = password;
 	Role = role;
 	Gender = gender;
-	Active=active;
+	
 }
 public int getEmpId() {
 	return empId;

@@ -8,6 +8,10 @@ import model.Employee;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import Config.JDBCConnection;
 
 public  class EmployeeDaoImpl implements IEmployeeDao{
@@ -49,8 +53,9 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 		Statement stmt=conn.createStatement();
 		ResultSet rst=stmt.executeQuery("select * from Employee");
 		if(rst!=null) {
-			Employee emp=new Employee();
+			Employee emp=null;
 			while(rst.next()){
+				emp=new Employee();
 			   emp.setEmpId(rst.getInt(1));
 			   emp.setFirstName(rst.getString(2));
 			   emp.setLastName(rst.getString(3));
@@ -102,6 +107,7 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 			ResultSet rst=pst.executeQuery();
 			if(rst!=null){
 				if(rst.next()) {
+					emp=new Employee();
 					emp.setEmpId(rst.getInt(1));
 					emp.setFirstName(rst.getString(2));
 					emp.setLastName(rst.getString(3));
@@ -129,11 +135,12 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 			
 			pst.setInt(2,emp.getEmpId());
 			int i=pst.executeUpdate();
+			JFrame f=new JFrame();
 			if(i==1) {
-				System.out.println("1. record updated");
+				JOptionPane.showMessageDialog(f,"Password changed");
 			}
 			else {
-				System.out.println("updation failed");
+				JOptionPane.showMessageDialog(f, "Password not changed");
 			}
 		    }
 			catch(SQLException ex) {
@@ -150,11 +157,12 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 			pst.setString(1,"Deactive");			
 			pst.setInt(2,emp.getEmpId());
 			int i=pst.executeUpdate();
+			JFrame f =new JFrame();
 			if(i==1) {
-				System.out.println("1.Employee Deactivated");
+				JOptionPane.showMessageDialog(f,"Employee Deactivated");
 			}
 			else {
-				System.out.println("updation failed");
+				JOptionPane.showMessageDialog(f,"Deactivation failed");
 			}
 		    }
 			catch(SQLException ex) {
@@ -186,16 +194,17 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 	@Override
 	public void activateEmployee(Employee emp) {
 		try {
-			PreparedStatement pst=conn.prepareStatement("Activate Employee where empId=?");
+			PreparedStatement pst=conn.prepareStatement("Activate Employee set Active=? where empId=?");
 			
 			pst.setString(1,"Active");	
 			pst.setInt(2, emp.getEmpId());
 			int i=pst.executeUpdate();
+			JFrame f =new JFrame();
 			if(i==1) {
-				System.out.println("1.Employee Activated");
+				JOptionPane.showMessageDialog(f,"Employee Activated");
 			}
 			else {
-				System.out.println("Activation failed");
+				JOptionPane.showMessageDialog(f,"Activation failed");
 			}
 		    }
 			catch(SQLException ex) {

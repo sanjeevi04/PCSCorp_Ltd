@@ -25,10 +25,10 @@ public class JobController {
 		  jb.setSkills(s5);
 		  jb.setSalary(s6);
 	      if(s1.equals("HRA")) {
-	    	  jb.setActivate("Active");  
+	    	  jb.setActivate("Activated");  
 	      }
 	      else {
-	    	  jb.setActivate("Deactive");
+	    	  jb.setActivate("Deactivated");
 	    	  
 	      }
 	      jobDao.addJob(jb);
@@ -50,7 +50,7 @@ public class JobController {
 		try {
 			BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
 			int id;
-			System.out.println("Enter the JobId whose record you want to access:");
+			System.out.println("Enter the EmployeeID whose record you want to access:");
 			id=Integer.parseInt(reader.readLine());
 			Job job=jobDao.getJobById(id);
 			System.out.println(job);
@@ -64,10 +64,22 @@ public class JobController {
 		try {
 			BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
 			int id;
-			System.out.println("Enter the JobId whose record you want to update:");
+			String location, confirmlocation;
+			System.out.println("Enter JobId whose record you want to update:");
 			id=Integer.parseInt(reader.readLine());
-			Job job=jobDao.getJobById(id);
-			jobDao.updateJob(job);
+			Job jb=jobDao.getJobById(id);
+			System.out.println("Enter your new location:");
+			location=reader.readLine();
+			System.out.println("re-enter same Location to confirm:");
+			confirmlocation=reader.readLine();
+			if(location.contentEquals(confirmlocation)) {
+				jb.setLocation(location);
+				jobDao.updateJob(jb);
+			}
+			else {
+				System.out.println("Sorry! you have entered different location");
+			}
+			System.out.println(jb);
 		}
 		catch(IOException ex) {
 			System.out.println(ex.getMessage());

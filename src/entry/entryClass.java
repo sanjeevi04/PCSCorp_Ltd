@@ -57,14 +57,14 @@ public void testConnection() throws ClassNotFoundException, SQLException{
 				empController.getAllEmployees();
 				break;
 			case 2:
-				int id;
+				int id = 0;
 				System.out.println("Enter the Id:");
 				id=sc.nextInt();
 				empController.getEmployeeById(id);
 				break;
 			case 3:
 				System.out.println("Enter Employee Detail:");
-				String s1,s2,s3,s4,s5,s6;
+				String s1 = null,s2,s3,s4,s5,s6;
 				System.out.println("Enter Employee Detail:");
 				System.out.println("Enter First Name:");
 				s1=sc.next();
@@ -81,7 +81,7 @@ public void testConnection() throws ClassNotFoundException, SQLException{
 				empController.addEmployee(s1,s2,s3,s4,s5,s6);
 				break;
 			case 4:
-				empController.updateEmployee();
+				empController.updateEmployee(id,s1,s2);
 				break;
 			case 5:
 				System.out.println("Enter EmployeeId whose record you want to deactivate:");

@@ -15,7 +15,7 @@ public class EMPHome extends JFrame{
 	 JButton bViewProfile,bUpdateProfile,bUpdateSkill,bApplyJob,bLogout;
 	 public EMPHome(Employee emp) {
 		 container=getContentPane();
-		 LTitle=new JLabel(emp.getFirstName());
+		 LTitle=new JLabel(" Welcome "+emp.getFirstName()+" !");
 		 
 		 bViewProfile=new JButton("View Profile");
 			bViewProfile.addActionListener(new ActionListener(){
@@ -40,7 +40,12 @@ public class EMPHome extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
+					try {
+						new ChangePasswordFrame();
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}	
 			});
 			bUpdateSkill=new JButton("Update Skill");
@@ -62,7 +67,12 @@ public class EMPHome extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
+					try {
+						new ApplyJobFrame();
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
 				}	
 			});
@@ -76,10 +86,7 @@ public class EMPHome extends JFrame{
 					
 				}
 
-				private void logout() {
-					// TODO Auto-generated method stub
-					
-				}	
+			
 			});
 			
 			
@@ -97,6 +104,10 @@ public class EMPHome extends JFrame{
 	 public void setLayoutManager() {
 		 container.setLayout(null);
 	 }
+		protected void logout() {
+			// TODO Auto-generated method stub
+			this.dispose();
+		}	
 	 public void setLocationAndSize() {
 		 LTitle.setBounds(50, 80, 300,30 );
 		 bViewProfile.setBounds(50, 150, 300, 30);

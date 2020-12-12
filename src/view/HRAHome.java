@@ -15,7 +15,7 @@ public class HRAHome extends JFrame{
 	 JButton bSetActive,bSetActiveJob,bSetDeactive,bSetDeactiveJob,bViewAllEmp,bViewJob,bViewSelectEmp,bAddSkill,bViewSkill,bSetActiveSkill,bSetDeactiveSkill,bLogout;
 	 JLabel lTitle,lEmpId;
 	 JTextField tEmpId,tData;
-	 JFrame f;
+	 JFrame f=new JFrame();
 	 
 	 EmployeeController empController=null;
 	 JobController jobController=null;
@@ -93,7 +93,12 @@ public class HRAHome extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
+					try {
+						new AllSkillsFrame();
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
 				}	
 			});
@@ -130,7 +135,12 @@ public class HRAHome extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					skillController.getAllSkills();
+					try {
+						new AllJobsFrame();
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
 				}	
 			});
@@ -168,8 +178,10 @@ public class HRAHome extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					Logout();
+				}
+
 					
-				}	
 			});
 			
 			
@@ -181,10 +193,12 @@ public class HRAHome extends JFrame{
 		 this.setTitle("HRA Frame");
 		 this.setVisible(true);
 		 this.setBounds(10, 10, 500, 600);
-		 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 this.setResizable(false);
 	 }
-	 
+	 private void Logout() {
+			// TODO Auto-generated method stub
+			this.dispose();
+		}
 	 public void setLayoutManager() {
 		    container.setLayout(null);
 	 }

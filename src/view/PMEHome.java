@@ -118,8 +118,8 @@ public class PMEHome extends JFrame {
 		bViewAllSkill.setBounds(100,100,300,30);
 		bAddJob.setBounds(100,150,300,30);
 		bViewAllJobs.setBounds(100,200,300,30);
-		bSetDeactiveJob.setBounds(100,300,300,30);
-		bLogout.setBounds(150,400,100,30);
+		bSetDeactiveJob.setBounds(100,250,300,30);
+		bLogout.setBounds(150,300,100,30);
 	}
 
 
@@ -132,6 +132,6 @@ public class PMEHome extends JFrame {
 
 	protected void Logout() {
 		// TODO Auto-generated method stub
-		
+		this.dispose();
 	}
 }

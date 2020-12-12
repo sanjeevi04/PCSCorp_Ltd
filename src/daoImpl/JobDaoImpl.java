@@ -49,18 +49,19 @@ public class JobDaoImpl implements IJobDao{
 	@Override
 	public void addJob(Job job) {
 		try {
-			PreparedStatement pst=conn.prepareStatement("Insert into Job(JobTitle,JobDescription,CompanyName,Location,KeySkill,Salary,Active) values(?,?,?,?,?,?,?)");
+			PreparedStatement pst=conn.prepareStatement("Insert into Job(JobTitle,JobDescription,CompanyName,Location,Skills,Salary,Activate) values(?,?,?,?,?,?,?)");
 			pst.setString(1,job.getJobTitle());
 			pst.setString(2,job.getJobDescription());
 			pst.setString(3,job.getCompanyName());
 			pst.setString(4,job.getLocation());
-			pst.setString(5,job.getSalary());
-			pst.setString(6,job.getActivate());
+			pst.setString(5, job.getSkills());
+			pst.setString(6,job.getSalary());
+			pst.setString(7,job.getActivate());
 			int i=pst.executeUpdate();
-			
+			JFrame f=new JFrame();
 			if(i==1)
 			{
-				System.out.println("1 record inserted");
+				JOptionPane.showMessageDialog(f,"Job inserted");
 			}
 			else
 			{
@@ -91,8 +92,9 @@ public class JobDaoImpl implements IJobDao{
 					job.setJobDescription(rst.getString(3));
 					job.setCompanyName(rst.getString(4));
 					job.setLocation(rst.getString(5));
-					job.setSalary(rst.getString(6));
-					job.setActivate(rst.getString(7));
+					job.setSkills(rst.getString(6));
+					job.setSalary(rst.getString(7));
+					job.setActivate(rst.getString(8));
 				}
 			}
 		}
@@ -132,17 +134,17 @@ public class JobDaoImpl implements IJobDao{
 	public void deactivateJob(Job job) {
 		try {
 			PreparedStatement pst=conn.prepareStatement("Update Job set Activate=? where JobId=?");
-			pst.setString(1,"Deactivate");
+			pst.setString(1,"Deactive");
 			pst.setInt(2,job.getJobId());
 			int i=pst.executeUpdate();
-			
+			JFrame f=new JFrame();
 			if(i==1)
 			{
-				System.out.println("Job Deactivated");
+				JOptionPane.showMessageDialog(f,"Job Deactivated");
 			}
 			else
 			{
-				System.out.println("Updation failed...");
+				JOptionPane.showMessageDialog(f,"Deactivation failed...");
 			}
 		}
 			catch(SQLException ex)
@@ -179,13 +181,13 @@ public class JobDaoImpl implements IJobDao{
 	@Override
 	public void activateJob(Job job) {
 		try {
-			PreparedStatement pst=conn.prepareStatement("update Skill set Active=? where SkillId=? ");
+			PreparedStatement pst=conn.prepareStatement("update Skill set Activate=? where JobId=? ");
 			pst.setString(1, "Active");
 			pst.setInt(2, job.getJobId());
 			int i=pst.executeUpdate();
 			JFrame f = new JFrame();
 			if(i==1){
-				JOptionPane.showMessageDialog(f,"Skill Activated...");
+				JOptionPane.showMessageDialog(f,"Job Activated...");
 			}
 			else {
 				JOptionPane.showMessageDialog(f,"Activation failed...");

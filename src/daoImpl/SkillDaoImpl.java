@@ -55,14 +55,14 @@ public class SkillDaoImpl implements ISkillDao{
 			pst.setString(2,sk.getSkillDescription());
 			pst.setString(3,sk.getActive());
 			int i=pst.executeUpdate();
-			
+			JFrame f =new JFrame();
 			if(i==1)
 			{
-				System.out.println("1 record inserted");
+				JOptionPane.showMessageDialog(f,"Skill inserted");
 			}
 			else
 			{
-				System.out.println("Insertion failed...");
+				JOptionPane.showMessageDialog(f,"Insertion failed...");
 			}
 		}
 			catch(SQLException ex)
@@ -128,17 +128,17 @@ public class SkillDaoImpl implements ISkillDao{
 	public void deactivateSkill(Skill sk) {
 		try {
 			PreparedStatement pst=conn.prepareStatement("Update Skill set Active=? where SkillId=?");
-			pst.setString(1,"Deactivate");
+			pst.setString(1,"Deactive");
 			pst.setInt(2,sk.getSkillId());
 			int i=pst.executeUpdate();
-			
+			JFrame f =new JFrame();
 			if(i==1)
 			{
-				System.out.println("Skill Deactivated");
+				JOptionPane.showMessageDialog(f,"Skill Deactivated");
 			}
 			else
 			{
-				System.out.println("Updation failed...");
+				JOptionPane.showMessageDialog(f,"Deactivation failed...");
 			}
 		}
 			catch(SQLException ex)

@@ -3,6 +3,10 @@ package daoImpl;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import Config.JDBCConnection;
 import dao.IEmpSkillDao;
 import dao.ISkillDao;
@@ -46,11 +50,13 @@ public class EmpSkillDaoImpl implements IEmpSkillDao {
 			pst.setInt(2,esk.getSkillId());
 			pst.setInt(3, esk.getExpYear());
 			int i=pst.executeUpdate();
+			JFrame f =new JFrame();
+			
 			if(i==1){
-				System.out.println("1 record inserted...");
+				JOptionPane.showMessageDialog(f,"Employee Skill inserted...");
 			}
 			else {
-				System.out.println("insertion failed...");
+				JOptionPane.showMessageDialog(f,"insertion failed...");
 			}
 		}
 		catch(SQLException ex) {
@@ -83,7 +89,6 @@ public class EmpSkillDaoImpl implements IEmpSkillDao {
 	@Override
 	public void updateEmpSkill(EmpSkill esk) {
 		try {
-			//creating PreparedStatement object by passing query string
 			PreparedStatement pst=conn.prepareStatement("update EmpSkill set ExpYear=? where ESId=? ");
 			pst.setInt(1, esk.getExpYear());
 			pst.setInt(2, esk.getESId());
@@ -103,7 +108,6 @@ public class EmpSkillDaoImpl implements IEmpSkillDao {
 	@Override
 	public void deleteEmpSkill(int id) {
 		try {
-			//creating PreparedStatement object by passing query string
 			PreparedStatement pst=conn.prepareStatement("delete from EmpSkill where ESId=? ");
 			pst.setInt(1, id);
 			int i=pst.executeUpdate();
