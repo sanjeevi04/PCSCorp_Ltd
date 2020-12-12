@@ -17,32 +17,19 @@ public class SkillController {
 		skDao=new SkillDaoImpl();
 	}
 	
-	public Skill addSkill()  
+	public void addSkill(String s1, String s2)  
 	{
 		Skill skill=new Skill();
-		try {
-		BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Enter Skill Description:");
-		skill.setSkillDescription(reader.readLine());
-		System.out.println("Enter Skill Name:");
-		String skillName=reader.readLine();
-		skill.setSkillName(skillName);
-		if(skillName.equals("coding")) {
+		skill.setSkillName(s1);
+		skill.setSkillDescription(s2);
+		if(s1.equals("coding")) {
 			skill.setActive("Active");
 		}
 		else {
 			skill.setActive("Deactive");
 		}
-		skDao.addSkill(skill);
-		
-	}
-		catch(IOException ex)
-		{
-			System.out.println(ex.getMessage());
-		}
-		return skill;
-		
-}
+		skDao.addSkill(skill);		
+	}	
 	
 	public void getAllSkills() {
 		List<Skill> allSkillList=skDao.getAllSkills();
@@ -51,18 +38,9 @@ public class SkillController {
 		}
 	}
 	
-	public void getSkillById() {
-		try {
-			BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-			int id;
-			System.out.println("Enter SkillId whose record you want to access:");
-			id=Integer.parseInt(reader.readLine());
+	public Skill getSkillById(int id) {
 			Skill sk=skDao.getSkillById(id);
-			System.out.println(sk);
-			}
-		catch(IOException ex) {
-			System.out.println(ex.getMessage());
-			}
+		    return sk;
 	}
 	public void updateSkill() {
 		try {
@@ -85,18 +63,9 @@ public class SkillController {
 			System.out.println(ex.getMessage());
 		}
 	}
-	public void deactivateSkill() {
-		try {
-			BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-			int id;
-			System.out.println("Enter SkillId whose record you want to deactivate:");
-			id=Integer.parseInt(reader.readLine());
-			Skill sk=skDao.getSkillById(id);
-			skDao.deactivateSkill(sk);
-		}
-		catch(IOException ex) {
-			System.out.println(ex.getMessage());
-		}
+	public void deactivateSkill(int id) {
+		Skill skill=skDao.getSkillById(id);
+		skDao.deactivateSkill(skill);
 	}
 	public void DeleteSkill() {
 		try {

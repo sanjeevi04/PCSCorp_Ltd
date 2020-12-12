@@ -3,7 +3,7 @@ package entry;
 import java.sql.SQLException;
 import view.LoginFrame;
 import view.RegistrationFrame;
-
+import java.lang.NullPointerException;
 
 public class FrameTest {
 

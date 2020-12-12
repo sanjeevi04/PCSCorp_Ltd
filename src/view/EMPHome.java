@@ -3,6 +3,8 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.*;
 import model.Employee;
 
@@ -21,6 +23,14 @@ public class EMPHome extends JFrame{
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
+						int s=emp.getEmpId();
+						try {
+							new ViewProfile(s);
+						} catch (ClassNotFoundException | SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					
 				}
 
 			});
@@ -38,7 +48,12 @@ public class EMPHome extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
+					try {
+						new AddSkillFrame();
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
 				}	
 			});
@@ -57,7 +72,12 @@ public class EMPHome extends JFrame{
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					logout();
 					
+				}
+
+				private void logout() {
+					// TODO Auto-generated method stub
 					
 				}	
 			});

@@ -2,48 +2,50 @@ package model;
 
 public class EmpSkill {
 
-	private int esId;
-	private int employeeId;
-	private int skillId;
-	private int expYear;
+	private int ESId;
+	private int EmployeeId;
+	private int SkillId;
+	private int ExpYear;
 	public EmpSkill() {
 			
 	}	
 	public EmpSkill(int employeeId, int skillId, int expYear) {
 		super();
-		employeeId = employeeId;
-		skillId = skillId;
-		expYear = expYear;
+		EmployeeId = employeeId;
+		SkillId = skillId;
+		ExpYear = expYear;
 	}
 	public int getESId() {
-		return esId;
+		return ESId;
 	}
 	public void setESId(int esId) {
-		this.esId = esId;
+		ESId = esId;
 	}
 	public int getEmployeeId() {
-		return employeeId;
+		return EmployeeId;
 	}
 	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+		EmployeeId = employeeId;
 	}
 	public int getSkillId() {
-		return skillId;
+		return SkillId;
 	}
 	public void setSkillId(int skillId) {
-		this.skillId = skillId;
+		SkillId = skillId;
 	}
 	public int getExpYear() {
-		return expYear;
+		return ExpYear;
 	}
 	public void setExpYear(int expYear) {
-		this.expYear = expYear;
+		ExpYear = expYear;
 	}
 	@Override
 	public String toString() {
-		return "EmpSkill [esId=" + esId + ", employeeId=" + employeeId + ", skillId=" + skillId + ", expYear=" + expYear
+		return "EmpSkill [ESId=" + ESId + ", EmployeeId=" + EmployeeId + ", SkillId=" + SkillId + ", ExpYear=" + ExpYear
 				+ "]";
 	}
+
+	
 	
 	
 	

@@ -29,9 +29,9 @@ public class ActivateEmpFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int ei;
-				ei=Integer.parseInt(tEmployeeId.getText());
-				empController.activateEmployee(ei);
+				int id;
+				id=Integer.parseInt(tEmployeeId.getText());
+				empController.activateEmployee(id);
 			}
 			
 		});

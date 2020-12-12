@@ -15,32 +15,16 @@ public class JobController {
 		jobDao=new JobDaoImpl();
 	}
 	
-	public Job addJob() {
+	public void addJob(String s1, String s2, String s3, String s4, String s5, String s6) {
 		  
-		 Job jb=new Job();
-		  
-		  try {
-	      BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-	      
-	      System.out.println("Enter job title:");
-	      String Title=reader.readLine();
-	      
-	      System.out.println("Enter job description:");
-		  jb.setJobDescription(reader.readLine());
-	      
-		  System.out.println("Enter company name:");
-		  jb.setCompanyName(reader.readLine());
-	      
-		  System.out.println("Enter location:");
-		  jb.setLocation(reader.readLine());
-	      
-		  System.out.println("Enter skills:");
-		  jb.setSkills(reader.readLine());
-	      
-		  System.out.println("Enter Salary:");
-		  jb.setSalary(reader.readLine());
-	      
-	      if(Title.equals("HRA")) {
+		 Job jb=new Job();		  	      
+	      jb.setJobTitle(s1);
+	      jb .setJobDescription(s2);
+		  jb.setCompanyName(s3);
+		  jb.setLocation(s4);
+		  jb.setSkills(s5);
+		  jb.setSalary(s6);
+	      if(s1.equals("HRA")) {
 	    	  jb.setActivate("Active");  
 	      }
 	      else {
@@ -48,11 +32,7 @@ public class JobController {
 	    	  
 	      }
 	      jobDao.addJob(jb);
-		  }
-		  catch(IOException ex) {
-			 System.out.println(ex.getMessage()); 
-		  }
-		return jb;  
+		   
 	  }
 	
 	public void getAllJob()

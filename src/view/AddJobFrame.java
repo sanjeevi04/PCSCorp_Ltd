@@ -52,7 +52,7 @@ public class AddJobFrame extends JFrame{
 				s4=tLocation.getText();
 				s5=tKeyskill.getText();
 				s6=tSalary.getText();
-				jobController.addJob();
+				jobController.addJob(s1,s2,s3,s4,s5,s6);
 				f=new JFrame();
 				JOptionPane.showMessageDialog(f,"Job Added");
 			}
@@ -64,7 +64,7 @@ public class AddJobFrame extends JFrame{
 		addComponentsToContainer();
 		this.setTitle("Add Job");
 		this.setVisible(true);
-		this.setBounds(10,10,500,800);
+		this.setBounds(10,10,500,600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		

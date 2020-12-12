@@ -53,7 +53,7 @@ public class RegistrationFrame extends JFrame{
 					if(s4.equals(s7))
 					{
 						f=new JFrame();
-						empController.addEmployee();
+						empController.addEmployee(s1,s2,s3,s4,s5,s6);
 						JOptionPane.showMessageDialog(f,"Registered Sucessfully!");
 					}
 					else
@@ -101,23 +101,23 @@ public class RegistrationFrame extends JFrame{
 
 
 	public void setLocationAndSize() {
-		lFirstname.setBounds(30, 150, 100, 30);
-		lLastname.setBounds(30, 200, 100, 30);
-		lUserId.setBounds(30, 250, 100, 30);
-		lPassword.setBounds(30, 300, 100, 30);
-		lconfirmPassword.setBounds(30,350,200,30);
-		lGender.setBounds(30, 400, 100, 30);
-		lRole.setBounds(30, 450, 150, 30);
+		lFirstname.setBounds(30, 50, 100, 30);
+		lLastname.setBounds(30, 100, 100, 30);
+		lUserId.setBounds(30, 150, 100, 30);
+		lPassword.setBounds(30, 200, 100, 30);
+		lconfirmPassword.setBounds(30,250,200,30);
+		lGender.setBounds(30, 300, 300, 30);
+		lRole.setBounds(30, 350, 350, 30);
 		
 		
-		tFirstname.setBounds(300, 150, 150, 30);
-		tLastname.setBounds(300,200,150,30);
-		tUserId.setBounds(300, 250, 150, 30);
-		tPassword.setBounds(300,300,150,30);
-		tconfirmPassword.setBounds(300,350,150,30);
-		tGender.setBounds(300, 400, 150, 30);
-		tRole.setBounds(300, 450, 150, 30);
-		bSubmit.setBounds(100, 550, 150, 30);
+		tFirstname.setBounds(300, 50, 150, 30);
+		tLastname.setBounds(300,100,150,30);
+		tUserId.setBounds(300, 150, 150, 30);
+		tPassword.setBounds(300,200,150,30);
+		tconfirmPassword.setBounds(300,250,150,30);
+		tGender.setBounds(300, 300, 150, 30);
+		tRole.setBounds(300, 350, 150, 30);
+		bSubmit.setBounds(100, 400, 150, 30);
 		
 	}
 

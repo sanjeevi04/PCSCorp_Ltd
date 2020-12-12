@@ -30,62 +30,39 @@ public class EmployeeController {
 		return emp;
 	}
 	
-  public Employee addEmployee() {
+  public void addEmployee(String s1, String s2, String s3, String s4, String s5, String s6) {
 	  
 	  Employee emp=new Employee();
-	  
-	  try {
-      BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+      emp.setFirstName(s1);
+      emp.setLastName(s2);
+      emp.setUserId(s3);
+      emp.setPassword(s4);
+      emp.setRole(s5);
+      String role=s6;
+      emp.setGender(s6);
       
-      System.out.println("Enter First Name:");
-      emp.setFirstName(reader.readLine());
-      
-      System.out.println("Enter Lirst Name:");
-      emp.setLastName(reader.readLine());
-      
-      System.out.println("Enter UserID:");
-      emp.setUserId(reader.readLine());
-      
-      System.out.println("Enter Password:");
-      emp.setPassword(reader.readLine());
-      
-      System.out.println("Role:");
-      String role=reader.readLine();
-      emp.setRole(role);
-      
-      System.out.println("Enter Gender:");
-      emp.setGender(reader.readLine());
-      
-      if(role.equals("HRA")) {
+      if(role.equals("HRA")   || role.equals("EMP") || role.equals("PME")) {
     	  emp.setActive("Active");  
       }
       else {
-    	  emp.setActive("Deactive");
-    	  
+    	  emp.setActive("Deactive");  
       }
-      empDao.addEmployee(emp);
-	  }
-	  catch(IOException ex) {
-		 System.out.println(ex.getMessage()); 
-	  }
-	return emp;  
+      empDao.addEmployee(emp); 
+  }  
+  
+  public List<Employee> getAllEmployees() {
+	  List<Employee>  allEmpList=empDao.getAllEmployees();
+	  for(Employee emp:allEmpList) {
+			System.out.println(emp);
+		}
+	 return allEmpList;
   }
   
-  public void getAllEmployees() {
-	  List<Employee>  allEmpList=empDao.getAllEmployees();
-	 
-	  for(Employee emp:allEmpList) {
-		  System.out.println(emp);
-	  }
-  }
-  public void getEmployeeById() throws NumberFormatException, IOException {
-	BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-	int id ;
-	System.out.println("Enter EmployeeId whose record you want to access:");
-		id=Integer.parseInt(reader.readLine());
+  public void getEmployeeById(int id)  {
 	  Employee emp=empDao.getEmployeeById(id);
 	  System.out.println(emp);
 	  }
+  
    public void updateEmployee() {
 	   try {
 			  BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
@@ -116,27 +93,15 @@ public class EmployeeController {
 			  System.out.println(ex.getMessage());
 			  }
    }
-   public void deactiveEmployee() throws NumberFormatException, IOException {
-	 
-			  BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-			  int id;
-			  System.out.println("Enter EmployeeId whose record you want to deactivate:");
-			  id=Integer.parseInt(reader.readLine());
+   
+   public void deactiveEmployee(int id)  {
 			  Employee emp=empDao.getEmployeeById(id);
 			  empDao.deactivateEmployee(emp);
    }
-   public void activateEmployee(int e) {
-	   try {
-			  BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-			  int id;
-			  System.out.println("Enter EmployeeId whose record you want to Activate:");
-			  id=Integer.parseInt(reader.readLine());
-			  Employee emp=empDao.getEmployeeById(e);
+   
+   public void activateEmployee(int id) {
+			  Employee emp=empDao.getEmployeeById(id);
 			  empDao.activateEmployee(emp);
-			  }
-		  catch(IOException ex) {
-			  System.out.println(ex.getMessage());
-			  }
    }
    
    

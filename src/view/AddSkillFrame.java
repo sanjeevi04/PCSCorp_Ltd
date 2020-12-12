@@ -39,7 +39,7 @@ public class AddSkillFrame extends JFrame{
 				String s1,s2;
 				s1=tSkillname.getText();
 				s2=tSkilldescrip.getText();
-				skillController.addSkill();
+				skillController.addSkill(s1,s2);
 				f=new JFrame();
 				JOptionPane.showMessageDialog(f,"Skill Added");
 			}

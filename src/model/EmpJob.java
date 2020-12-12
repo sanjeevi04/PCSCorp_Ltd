@@ -2,48 +2,50 @@ package model;
 
 public class EmpJob {
 
-	private int ejId;
-	private int empId;
-    private int jobId;
-    private String recruited;
+	private int EJId;
+	private int EmployeeId;
+    private int JobId;
+    private String Recruited;
     public EmpJob() {
     	
     }
 	public EmpJob(int empId, int jobId, String recruited) {
 		super();
-		empId = empId;
-		jobId = jobId;
-		recruited = recruited;
+		EmployeeId = empId;
+		JobId = jobId;
+		Recruited = recruited;
 	}
 	public int getEJId() {
-		return ejId;
+		return EJId;
 	}
 	public void setEJId(int ejId) {
-		this.ejId = ejId;
+		EJId = ejId;
 	}
 	public int getEmployeeId() {
-		return empId;
+		return EmployeeId;
 	}
 	public void setEmployeeId(int empId) {
-		this.empId = empId;
+		EmployeeId = empId;
 	}
 	public int getJobId() {
-		return jobId;
+		return JobId;
 	}
 	public void setJobId(int jobId) {
-		this.jobId = jobId;
+		JobId = jobId;
 	}
 	public String getRecruited() {
-		return recruited;
+		return Recruited;
 	}
 	public void setRecruited(String recruited) {
-		this.recruited = recruited;
+		Recruited = recruited;
 	}
 	@Override
 	public String toString() {
-		String EmployeeId = null;
-		return "EmpJob [ejId=" + ejId + ", employeeId=" + EmployeeId + ", jobId=" + jobId + ", recruited=" + recruited + "]";
+		return "EmpJob [EJId=" + EJId + ", EmployeeId=" + EmployeeId + ", JobId=" + JobId + ", Recruited=" + Recruited
+				+ "]";
 	}
+
+	
 	
 	
 	

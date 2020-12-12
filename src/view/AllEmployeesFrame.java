@@ -17,17 +17,17 @@ public class AllEmployeesFrame {
 		Statement stmt=conn.createStatement();
 		frame=new JFrame();   
 		JTable table=new JTable();
-		DefaultTableModel model = new DefaultTableModel(new String[]{"EmployeeId", "FirstName", "LastName", "Role","Gender", "Active"}, 0);
+		DefaultTableModel model = new DefaultTableModel(new String[]{"empId", "FirstName", "LastName", "Role","Gender", "Active"}, 0);
 		ResultSet rst=stmt.executeQuery("select * from Employee");
 		while(rst.next())
 		{
-		    int a = rst.getInt("EmployeeId");
-		    String b = rst.getString("FirstName");
-		    String c = rst.getString("LastName");
-		    String d = rst.getString("Role");
-		    String e = rst.getString("Gender");
-		    String f = rst.getString("Active");
-		    model.addRow(new Object[]{a,b,c,d,e,f});
+		    int eId = rst.getInt("empId");
+		    String fName = rst.getString("FirstName");
+		    String lName = rst.getString("LastName");
+		    String rl = rst.getString("Role");
+		    String gn = rst.getString("Gender");
+		    String act = rst.getString("Active");
+		    model.addRow(new Object[]{eId,fName,lName,rl,gn,act});
 		    table.setModel(model);
 		    container=getContentPane();
 		    setLayoutManger();
@@ -46,7 +46,7 @@ public class AllEmployeesFrame {
 		
 	}
 
-	private void setBounds(int i, int j, int k, int l) {
+	private void setBounds(int a, int b, int c, int d) {
 		// TODO Auto-generated method stub
 		
 	}

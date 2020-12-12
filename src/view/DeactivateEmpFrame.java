@@ -29,16 +29,12 @@ public class DeactivateEmpFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int s;
-				s=Integer.parseInt(tEmployeeId.getText());
-				try {
-					empController.deactiveEmployee();
-				} catch (NumberFormatException | IOException e1) {
-					e1.printStackTrace();
-				}
+				int id;
+				id=Integer.parseInt(tEmployeeId.getText());
+					empController.deactiveEmployee(id);	
 			}
-			
-		});
+			});
+		
 		
 		setLayoutManager();
 		setLocationAndSize();

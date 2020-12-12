@@ -28,55 +28,75 @@ public void testConnection() throws ClassNotFoundException, SQLException{
 		SkillController skController =new SkillController();
 		
 		Scanner sc=new Scanner(System.in);
-		int option,menu;
+		int option;
 		String TableName;
 		char ch='y',mn='y';
+        BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+		
 		while(mn=='y' || mn=='Y') {
-		BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Controller Menu:");
-		System.out.println("1.EmployeeController");
-		System.out.println("2.JobController");
-		System.out.println("3.SkillContoller");
-		System.out.println("4.Exit ");
-		System.out.println("Choose Menu:");
-		menu=sc.nextInt();
-		switch(menu)
-		{
-		case 1:
-		{
+		System.out.println("Enter the table name to open CRUD Menu(Employee/Skill/Job/EmpSkill/EmpJob): ");
+		TableName=reader.readLine();
+		if(TableName.equals("Employee")) {
+		
+
 		while(ch=='y' || ch=='Y') {
-			System.out.println("Menu:");
+			System.out.println("CRUD  Menu:");
 			System.out.println("1. View all Employees records");
 			System.out.println("2. View single Employees record");
 			System.out.println("3. Add an Employee");
 			System.out.println("4. Update an Employee record");
 			System.out.println("5. Deactive an Employee record");
-			System.out.println("6. Delete an Employees record");
-			System.out.println("7. Exit");
+			System.out.println("6. Active an Employee record");
+			System.out.println("7. Delete an Employees record");
+			System.out.println("8. Exit");
 			System.out.println("Enter your choice:");
 			option=sc.nextInt();
 			switch(option) {
 			case 1:
-				System.out.println("Following are all Employees Detail:");
+				
 				empController.getAllEmployees();
 				break;
 			case 2:
-				empController.getEmployeeById();
+				int id;
+				System.out.println("Enter the Id:");
+				id=sc.nextInt();
+				empController.getEmployeeById(id);
 				break;
 			case 3:
 				System.out.println("Enter Employee Detail:");
-				empController.addEmployee();
+				String s1,s2,s3,s4,s5,s6;
+				System.out.println("Enter Employee Detail:");
+				System.out.println("Enter First Name:");
+				s1=sc.next();
+				System.out.println("Enter Last Name:");
+				s2=sc.next();
+				System.out.println("Enter UserId:");
+				s3=sc.next();
+				System.out.println("Enter Password:");
+				s4=sc.next();
+				System.out.println("Enter Gender:");
+				s5=sc.next();
+				System.out.println("Enter Role:");
+				s6=sc.next();
+				empController.addEmployee(s1,s2,s3,s4,s5,s6);
 				break;
 			case 4:
 				empController.updateEmployee();
 				break;
 			case 5:
-				empController.deactiveEmployee();
+				System.out.println("Enter EmployeeId whose record you want to deactivate:");
+				id=sc.nextInt();
+				empController.deactiveEmployee(id);
 				break;
 			case 6:
-				empController.deleteEmployee();
+				System.out.println("Enter EmployeeId whose record you want to activate:");
+				id=sc.nextInt();
+				empController.activateEmployee(id);
 				break;
 			case 7:
+				empController.deleteEmployee();
+				break;
+			case 8:
 				System.exit(0);
 				break;
 			default:
@@ -86,9 +106,7 @@ public void testConnection() throws ClassNotFoundException, SQLException{
 			ch=sc.next().charAt(0);
 			}
 		}
-		
-		case 2:
-		{
+		else if(TableName.equals("Job")) {
 		while(ch=='y' || ch=='Y') {
 			System.out.println(" Menu:");
 			System.out.println("1. View all Job records");
@@ -110,7 +128,20 @@ public void testConnection() throws ClassNotFoundException, SQLException{
 					break;
 				case 3: 
 					System.out.println("Enter Job Detail:");
-					jbController.addJob();
+					String s1,s2,s3,s4,s5,s6;
+					System.out.println("Enter Job Title :");
+					s1=sc.next();
+					System.out.println("Enter Job Description:");
+					s2=sc.next();
+					System.out.println("Enter Company Name :");
+					s3=sc.next();
+					System.out.println("Enter Location:");
+					s4=sc.next();
+					System.out.println("Enter KeySkill:");
+					s5=sc.next();
+					System.out.println("Enter Salary:");
+					s6=sc.next();
+					jbController.addJob(s1,s2,s3,s4,s5,s6);
 					break;
 				case 4:
 					jbController.updateJob();
@@ -131,12 +162,10 @@ public void testConnection() throws ClassNotFoundException, SQLException{
 			System.out.println("Do you want to continue?(y/n)");
 			ch=sc.next().charAt(0);
 		}
+
 		}
-		
-		case 3:
-		{
-			while(ch=='y' || ch=='Y')
-			{
+		else if(TableName.equals("Skill")) {
+			while(ch=='y' || ch=='Y')	{
 				System.out.println("Menu:");
 				System.out.println("1. View all Skill records");
 				System.out.println("2. View single Skill record");
@@ -154,17 +183,26 @@ public void testConnection() throws ClassNotFoundException, SQLException{
 				skController.getAllSkills();
 				break;
 				case 2:
-				skController.getSkillById();
+				System.out.println("Enter the Id:");
+				int id=sc.nextInt();
+				skController.getSkillById(id);
 				break;
 				case 3: 
 				System.out.println("Enter Skill Detail:");
-				skController.addSkill();
+				String s1,s2;
+				System.out.println("Enter Skill name:");
+				s1=sc.next();
+				System.out.println("Enter Skill Description:");
+				s2=sc.next();
+				skController.addSkill(s1,s2);
 				break;
 				case 4:
 				skController.updateSkill();
 				break;
 				case 5:
-				skController.deactivateSkill();
+				System.out.println("Enter SkillId whose record you want to deactivate:");
+				id=sc.nextInt();
+				skController.deactivateSkill(id);
 				break;
 				case 6:
 				skController.DeleteSkill();
@@ -179,25 +217,14 @@ public void testConnection() throws ClassNotFoundException, SQLException{
 				System.out.println("Do you want to continue?(y/n)");
 				ch=sc.next().charAt(0);
 			}
-			break;
-		}
-		case 4:
-			System.exit(0);
-			break;
-		default:
-			System.out.println("Wrong input");
 		}
 	
-	System.out.println("Do you want to continue?(y/n)");
-	ch=sc.next().charAt(0);
+		System.out.println("Do you want perfom CRUD Menu on other tables?(y/n)");
+		ch=sc.next().charAt(0);
+		}
+	}
 }
-	
-	System.out.println("Do you want perfom CRUD operation on other tables?(y/n)");
-	mn=sc.next().charAt(0);
-		
-	}
 
-	}
 
 
 

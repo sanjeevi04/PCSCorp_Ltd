@@ -93,8 +93,7 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 			System.out.println(ex.getMessage());
 		}
 	}
-
-	@Override
+   @Override
 	public Employee getEmployeeById(int id) {
 		Employee emp=new Employee();
 		try{
@@ -123,7 +122,7 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 	@Override
 	public void updateEmployee(Employee emp) {
 		try {
-			PreparedStatement pst=conn.prepareStatement("update Employee set Password=? where EmpId=?");
+			PreparedStatement pst=conn.prepareStatement("update Employee set password=? where empId=?");
 			
 			
 			pst.setString(1,emp.getPassword());
@@ -146,7 +145,7 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 	@Override
 	public void deactivateEmployee(Employee emp) {
 		try {
-			PreparedStatement pst=conn.prepareStatement("update Employee set Active= ?  where EmpId=?");
+			PreparedStatement pst=conn.prepareStatement("update Employee set Active= ?  where empId=?");
 			
 			pst.setString(1,"Deactive");			
 			pst.setInt(2,emp.getEmpId());
@@ -167,7 +166,7 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 	@Override
 	public void deleteEmployee(int id) {
 		try {
-			PreparedStatement pst=conn.prepareStatement("Delete Employee where EmpId=?");
+			PreparedStatement pst=conn.prepareStatement("Delete Employee where empId=?");
 			
 			pst.setInt(1,id);			
 			int i=pst.executeUpdate();
@@ -187,7 +186,7 @@ public  class EmployeeDaoImpl implements IEmployeeDao{
 	@Override
 	public void activateEmployee(Employee emp) {
 		try {
-			PreparedStatement pst=conn.prepareStatement("Activate Employee where EmpId=?");
+			PreparedStatement pst=conn.prepareStatement("Activate Employee where empId=?");
 			
 			pst.setString(1,"Active");	
 			pst.setInt(2, emp.getEmpId());

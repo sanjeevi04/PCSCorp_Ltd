@@ -10,6 +10,8 @@ import controller.EmployeeController;
 import model.Employee;
 
 public class LoginFrame extends JFrame{
+	
+	private static final long serialVersionUID = 1L;
 	Container container;
  JLabel lUserId,lPassword,lMessage;
  JTextField tUserId;
@@ -27,43 +29,48 @@ public class LoginFrame extends JFrame{
 	 tPassword=new JPasswordField();
 	 bLogin=new JButton("LOGIN");
 	 empController=new EmployeeController();
-	 //Event Handling for LoginButton
+	
 	 bLogin.addActionListener(new ActionListener() {
 		 
 		 @Override
 		 public void actionPerformed(ActionEvent arg0) {
 			 String userId,password;
+			 Employee emp=new Employee();
 			 userId=tUserId.getText();
 			 password=new String(tPassword.getPassword());
-			// System.out.println(userId +" " +password);
-			 Employee emp=new Employee();
+		
 			emp=empController.checkLogin(userId, password);
-			 if(emp!=null) {
+			 if(emp==null) {
 				 
-			       if(emp.getActive().equals("Active")) {
-				        if(emp.getRole().equals("HRA")) {
-					      try {
+				 lMessage.setText("You are not authorized user! Retry or Register!");			 
+			       
+			 }
+			 else {
+				 if(emp.getRole().equals("EMP"))
+					{
+					 new EMPHome(emp);
+					}
+					else if(emp.getRole().equals("HRA"))
+					{
+						
+						try {
 							new HRAHome();
-						} catch (ClassNotFoundException | SQLException e) {
+						} catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-				         }
-				   else if(emp.getRole().equals("PME")) {
-					    new PMEHome();
-				    }
-				   else {
-					 new EMPHome(emp);
-				   }				 
-			       }
-			 }
-			 else {
-				 lMessage.setText("you are not authoried user retry or register");
+					}
+					else 
+					{
+						new PMEHome();
+					}
 			 }
 		 }
 	 });
 	 bRegister=new JButton("REGISTER");
-	 //Event handling for Register Button
 	 bRegister.addActionListener(new ActionListener() {
 		 @Override
 		 public void actionPerformed(ActionEvent arg0) {
@@ -78,10 +85,9 @@ public class LoginFrame extends JFrame{
 	 setLayoutManager();
 	 setLocationAndSize();
 	 addComponentsToContainer();
-	 this.setTitle("Login Frame");
+	 this.setTitle("User Login ");
 	 this.setVisible(true);
-	 this.setBounds(10, 10, 500, 600);
-	 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 this.setBounds(10, 10, 500, 500);
 	 this.setResizable(false);
  }
  
@@ -90,20 +96,18 @@ public class LoginFrame extends JFrame{
  }
  public void setLocationAndSize() {
 	 lMessage.setBounds(50,80,300,30);
-	 lUserId.setBounds(50, 150, 100, 30);
-	 lPassword.setBounds(50, 250, 100, 30);
-	 tUserId.setBounds(250, 150, 150, 30);
-	 tPassword.setBounds(250, 250, 150, 30);
-	 cShowPassword.setBounds(250, 300, 150, 30);
-	 bLogin.setBounds(150, 400, 100, 30);
-	 bRegister.setBounds(300, 400, 100, 30);
+	 lUserId.setBounds(50, 100, 100, 30);
+	 lPassword.setBounds(50, 200, 100, 30);
+	 tUserId.setBounds(200, 100, 150, 30);
+	 tPassword.setBounds(200, 200, 150, 30);
+	 bLogin.setBounds(125, 300, 100, 30);
+	 bRegister.setBounds(275, 300, 100, 30);
  }
  public void addComponentsToContainer() {
 	 container.add(lUserId);
 	 container.add(tUserId);
 	 container.add(lPassword);
 	 container.add(tPassword);
-	 container.add(cShowPassword);
 	 container.add(bLogin);
 	 container.add(bRegister);
 	 container.add(lMessage);

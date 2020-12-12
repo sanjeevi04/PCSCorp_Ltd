@@ -2,25 +2,26 @@ package model;
 
 public class Employee {
 private int empId;
-private String firstName;
-private String lastName;
-private String userId;
-private String password;
-private String role;
-private String gender;
-private String active;
+private String FirstName;
+private String LastName;
+private String UserId;
+private String Password;
+private String Role;
+private String Gender;
+private String Active;
 public Employee() {
 	
 	
 }
-public Employee(String firstName, String lastName, String userId, String password, String role, String gender) {
+public Employee(String firstName, String lastName, String userId, String password, String role, String gender,String active) {
 	super();
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.userId = userId;
-	this.password = password;
-	this.role = role;
-	this.gender = gender;
+	FirstName = firstName;
+	LastName = lastName;
+	UserId = userId;
+	Password = password;
+	Role = role;
+	Gender = gender;
+	Active=active;
 }
 public int getEmpId() {
 	return empId;
@@ -29,52 +30,55 @@ public void setEmpId(int empId) {
 	this.empId = empId;
 }
 public String getFirstName() {
-	return firstName;
+      return FirstName;
 }
 public void setFirstName(String firstName) {
-	this.firstName = firstName;
+	FirstName = firstName;
 }
 public String getLastName() {
-	return lastName;
+	return LastName;
 }
 public void setLastName(String lastName) {
-	this.lastName = lastName;
+	LastName = lastName;
 }
 public String getUserId() {
-	return userId;
+	return UserId;
 }
 public void setUserId(String userId) {
-	this.userId = userId;
+	UserId = userId;
 }
 public String getPassword() {
-	return password;
+	return Password;
 }
 public void setPassword(String password) {
-	this.password = password;
+	Password = password;
 }
 public String getRole() {
-	return role;
+	String r="Role";
+	return r;
 }
 public void setRole(String role) {
-	this.role = role;
+	Role = role;
 }
 public String getGender() {
-	return gender;
+	return Gender;
 }
 public void setGender(String gender) {
-	this.gender = gender;
+	Gender = gender;
 }
 public String getActive() {
-	return active;
+	String s1="Active";
+	return s1;
 }
 public void setActive(String active) {
-	this.active = active;
+	Active = active;
 }
 @Override
 public String toString() {
-	return "Employee [empId=" + empId + ", firstName=" + firstName + ", lastName=" + lastName + ", userId=" + userId
-			+ ", password=" + password + ", role=" + role + ", gender=" + gender + ", active=" + active + "]";
+	return "Employee [empId=" + empId + ", FirstName=" + FirstName + ", LastName=" + LastName + ", UserId=" + UserId
+			+ ", Password=" + Password + ", Role=" + Role + ", Gender=" + Gender + ", Active=" + Active + "]";
 }
+
 
 
 
